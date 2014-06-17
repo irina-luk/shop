@@ -1,0 +1,36 @@
+﻿header, nav, article, footer {display: block;}
+body {
+   width: 90%; margin: 0 auto;  
+   outline: 1px solid red;
+}
+header, nav, .rightbar, footer {
+   padding: 10px;
+}
+header {
+   text-align: center;
+}
+nav {
+   float: left; width: 180px; 
+}
+.rightbar {
+   float: right; width: 180px; 
+}
+article {
+   margin: 0 180px; overflow: hidden;
+}
+.clr, footer {clear: both;}
+.hideme {display: none;}
+a:hover {text-decoration: none;}
+
+.product {
+   float: left; padding: 10px; height: 120px; width: 28%; text-align: center; 
+}
+.menuCaption{
+    padding: 20px 0 3px 0; font-weight: bold; 
+}
+.showHidden{
+    text-decoration: underline;	color: blue; cursor: pointer;}
+
+#registerBoxHidden{	display: none;}
+#userRedact {font-size: .7em}
+#loginBox, #registerBoxs {text-align: center; margin: 0 0 30px 0;}

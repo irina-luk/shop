@@ -1,0 +1,10 @@
+﻿php_flag magic_quotes_gpc Off
+php_value date.timezone "Europe/Kiev"
+
+AddDefaultCharset utf-8
+DirectoryIndex index.php
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*) index.php
