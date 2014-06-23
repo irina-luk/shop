@@ -1,5 +1,4 @@
-﻿
- </article>   
+</article>   
    <footer>
       <hr />
       Footer

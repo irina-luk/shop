@@ -1,4 +1,3 @@
-﻿  
 {* шаблон главной страницы *} 	
 
    {foreach $rsProducts as $item}

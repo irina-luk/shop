@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /* Модель для таблицы продукции (products) */
     defined('SMARTY') or die('Access denied');

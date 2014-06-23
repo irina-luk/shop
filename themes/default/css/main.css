@@ -1,4 +1,4 @@
-﻿header, nav, article, footer {display: block;}
+header, nav, article, footer {display: block;}
 body {
    width: 90%; margin: 0 auto;  
    outline: 1px solid red;

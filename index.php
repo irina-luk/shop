@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     //для запрет прямого обращения
     define('SMARTY', TRUE);
    
@@ -20,6 +20,7 @@
                                         .PATH_SEPARATOR.SMARTYCLASS
                         		);
     //echo get_include_path();
+    //что работал autoload, когда используется smarty
     spl_autoload_register('autoload');  //если используется smarty
     function autoload($class_name) {
     	if(!include_once ($class_name . ".php")) {		

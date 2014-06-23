@@ -1,4 +1,4 @@
-﻿{*правій столбец*}
+{*правій столбец*}
 <div class="rightbar">
     {if isset($arUser)}
         <div id="userBox">

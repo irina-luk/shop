@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 defined('SMARTY') or exit('Access denied');
 /*  cartController.php
  * 

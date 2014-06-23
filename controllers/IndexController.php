@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /* Контроллер главной страницы */
 defined('SMARTY') or exit('Access denied');

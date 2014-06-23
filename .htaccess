@@ -1,4 +1,4 @@
-﻿php_flag magic_quotes_gpc Off
+php_flag magic_quotes_gpc Off
 php_value date.timezone "Europe/Kiev"
 
 AddDefaultCharset utf-8

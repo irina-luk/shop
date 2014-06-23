@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /* Модель для таблицы пользователей (users) */
 class UserModel {

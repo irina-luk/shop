@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /* Модель для таблицы категорий (categories) */
     defined('SMARTY') or die('Access denied');

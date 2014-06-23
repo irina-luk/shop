@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 defined('SMARTY') or exit('Access denied');
 
 class RouteController extends BaseController {	

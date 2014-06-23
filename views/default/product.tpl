@@ -1,4 +1,4 @@
-﻿{* страница продукта *}
+{* страница продукта *}
 <h3>{$rsProduct['name']}</h3>
     
 <img src="{$siteUrl}userfile/{$rsProduct['image']}">  

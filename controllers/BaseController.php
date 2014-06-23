@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 defined('SMARTY') or exit('Access denied');
 
 abstract class BaseController {	
@@ -42,7 +42,7 @@ abstract class BaseController {
 		}
 	}	
         
-    protected function input($param = array()) {	}
+    protected function input() {	}
     
     /* Формирование запрашиваемой страницы    */
     public function request($smarty, $params = array()){	

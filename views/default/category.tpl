@@ -1,4 +1,4 @@
-﻿{* Страница категории *}
+{* Страница категории *}
 
     <h1>{$rsCategory['name']}</h1>
     {if isset($rsProducts) && !empty($rsProducts)}

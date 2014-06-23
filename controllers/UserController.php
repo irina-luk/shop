@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /* Контроллер функций пользователя */
 defined('SMARTY') or exit('Access denied');
@@ -89,6 +89,7 @@ class UserController  extends BaseClient   {
                 $resData['success'] = 0; 
                 $resData['message'] = 'Неверный логин или пароль'; 
             }
+            d($resData);
             echo json_encode($resData);
         }
         

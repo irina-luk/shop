@@ -1,4 +1,4 @@
-﻿var url = '/shop/';
+var url = '/';
 /*  Функция добавления товара в корзину
  *  
  *  @param integer itemId ID продукта
@@ -8,7 +8,6 @@ function addToCart(itemId){
     console.log("js - addToCart()");
     $.ajax({
         type: 'POST',
-        async: false,
         url: url + 'cart/action/addtocart/id/' + itemId + '/',
         dataType: 'json',
         success: function(data){
@@ -79,7 +78,6 @@ function registerNewUser(){
     
      $.ajax({
         type: 'POST',
-        async: false,
         url: url + "user/action/register/",
         data: postData,
         dataType: 'json',
@@ -110,38 +108,38 @@ function login(){
     
      $.ajax({
         type: 'POST',
-        async: false,
         url: url + "user/action/login/",
+        async: false,
         data: postData,
         //data: {email:email, pwd:pwd},
         dataType: 'json',
-        success: function(data){
-            if(data['success'] == 1){
+        success: function(res){
+            if(res['success']){
     alert('login() - ' + postData);
                 $('#registerBox').hide();
                 $('#loginBox').hide();
  
-                $('#userLink').html(data['displayName']);
+                $('#userLink').html(res['displayName']);
                 $('#userBox').show();
 
                 //> заполняем поля на странице заказа
-                $('#name').val(data['name']);
-                $('#phone').val(data['phone']);
-                $('#adress').val(data['adress']);
+                $('#name').val(res['name']);
+                $('#phone').val(res['phone']);
+                $('#adress').val(res['adress']);
                 //<
 
                 $('#btnSaveOrder').show();
 
             } else {
-                alert('Error: ' + data['message']);
+                alert('Error: ' + res['message']);
             }
         },
-        error: function(data){
-            if(data['success'] == 1){
-                alert('login() - error - ' + data['message']);
+        error: function(res){
+            if(res['success'] == 1){
+                alert('login() - error - ' + res['message']);
             }
             else {
-                alert('login() - error - 0 -' + data['message']);
+                alert('login() - error - 0 -' + res['message']);
             }
         }
     }); 
