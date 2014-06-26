@@ -184,3 +184,33 @@ function showRegisterBox(){
         $("#registerBoxHidden").hide();
     }
 }
+
+ /* Сохранение заказа */
+function saveOrder(){
+    var postData = getData('form');
+     $.ajax({
+        type: 'POST',
+        async: false,
+        url: url + "cart/action/saveorder/",
+        data: postData,
+        dataType: 'json',
+        success: function(data){
+            if(data['success']){
+                alert(data['message']);
+                document.location = url;
+            } else {
+                alert(data['message']);
+            }
+        }
+    });
+}
+
+/* Показывать или прятать данные о заказе */
+function showProducts(id){
+    var objName = "#purchasesForOrderId_" + id;
+    if( $(objName).css('display') != 'table-row' ) {
+        $(objName).show();
+    } else {
+        $(objName).hide();
+    }
+}

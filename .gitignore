@@ -1,3 +1,6 @@
-﻿# игнорировать все файлы в каталоге
+# игнорировать все файлы в каталоге
 library/Smarty/
 tmp/
+userfile/
+access_log
+error_log

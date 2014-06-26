@@ -5,9 +5,11 @@ abstract class BaseClient extends BaseController {
     protected $ob_m_category;	
     protected $ob_m_product;	
     protected $ob_m_user;
+    protected $ob_m_order;
+    protected $ob_m_purchase;
     protected $content;
-	protected $style;	
-	protected $script;	
+    protected $style;	
+    protected $script;	
 
     protected function input($smarty, $param) {	
         foreach($this->styles as $style) {
