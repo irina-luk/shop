@@ -46,14 +46,3 @@ class PurchaseModel {
     }
 }
 
-
-function getPurchaseForOrder($orderId)
-{
-    $sql = "SELECT `pe`.*, `ps`.`name` 
-            FROM purchase as `pe`
-            JOIN products as `ps` ON `pe`.product_id = `ps`.id
-            WHERE `pe`.order_id = {$orderId}";
-   
-    $rs = mysql_query($sql); 
-    return createSmartyRsArray($rs); 
-}

@@ -84,13 +84,23 @@ class UserModel {
 
        $rs = $this->ins_driver->insert($sql); 
 
-       $res = array();
-       if($rs){
-            $res['success'] = 1;
-       } else {
-            $res['success'] = 0;
-       }
-       return $res;   
+       
+        if($rs){
+	    $sql = "SELECT * FROM users  
+                    WHERE (`email` = '{$email}' and `pwd` = '{$pwdMD5}') LIMIT 1";
+				
+	    $rs = $this->ins_driver->select($sql); 
+	    $rs = $this->createSmartyRsArray($rs);
+
+	    if(isset($rs[0])){
+               $rs['success'] = 1;
+	    } else {
+               $rs['success'] = 0;
+	    }
+	} else {
+	   $rs['success'] = 0;
+        }   
+        return $rs;          
     }
     
     /* Авторизация пользователя
@@ -151,6 +161,7 @@ class UserModel {
         return $rs;
     }
 
+    
     /* Преобразорвание результата работы функции выборки в ассоциативный массив
      * 
      * @param recordset $rs набор строк - результат работы SELECT

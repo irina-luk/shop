@@ -88,9 +88,11 @@ function registerNewUser(){
                 //> блок в левом столбце
                 $('#registerBox').hide();
                 $('#loginBox').hide();
-                $('#userRedact').attr('href', url + 'user/');    
+                $('#userRedact').attr('href', url + 'user/action/index/');    
                 $('#userLink').html(data['userName']);
                 $('#userBox').show();
+                                
+                $('#btnSaveOrder').show();
                 //<
             } else {
                 alert(data['message']);

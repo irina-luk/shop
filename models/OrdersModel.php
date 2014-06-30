@@ -60,6 +60,53 @@ class OrdersModel {
         }
         return false;
     }
+
+    /**
+     * Получить данные заказа текущего пользователя
+     * 
+     * @return array массив заказов с привязкой к продуктам 
+     */
+    public function getCurUserOrders()    {
+        $userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : 0;
+        $rs = $this->getOrdersWithProductsByUser($userId);
+
+        return $rs;
+    }
+    
+    /**
+     * Получить список заказов с привязкой к продуктам для пользователя $userId
+     * 
+     * @param integer $userId ID пользователя
+     * @return array массив заказов с привязкой к продуктам 
+     */
+    public function getOrdersWithProductsByUser($userId)    {	
+        $userId = intval($userId);
+        $sql = "SELECT * FROM orders
+                WHERE `user_id` = '{$userId}' ORDER BY id DESC";
+
+        $rs = $this->ins_driver->select($sql); 
+
+        $smartyRs = array();
+        while ($row = $rs->fetch_assoc()) {
+            $rsChildren = $this->getPurchaseForOrder($row['id']);
+
+            if($rsChildren){
+                $row['children'] = $rsChildren;
+                $smartyRs[] = $row;
+            } 
+        }
+       return $smartyRs;	
+    }
+
+    public function getPurchaseForOrder($orderId)    {
+        $sql = "SELECT `pe`.*, `ps`.`name` 
+                FROM purchase as `pe`
+                JOIN products as `ps` ON `pe`.product_id = `ps`.id
+                WHERE `pe`.order_id = {$orderId}";
+
+        $rs = $this->ins_driver->select($sql); 
+        return $this->createSmartyRsArray($rs); 
+    }
     
     /**
      * Преобразорвание результата работы функции выборки в ассоциативный массив
@@ -79,31 +126,3 @@ class OrdersModel {
 }
 
 
-
-/**
- * Получить список заказов с привязкой к продуктам для пользователя $userId
- * 
- * @param integer $userId ID пользователя
- * @return array массив заказов с привязкой к продуктам 
- */
-function getOrdersWithProductsByUser($userId)
-{	
-	$userId = intval($userId);
-	$sql = "SELECT * FROM orders
-			WHERE `user_id` = '{$userId}'
-			ORDER BY id DESC";
-	
-	$rs = mysql_query($sql); 
-
-	$smartyRs = array();
-    while ($row = mysql_fetch_assoc($rs)) {
-       	$rsChildren = getPurchaseForOrder($row['id']);
-
-        if($rsChildren){
-            $row['children'] = $rsChildren;
-			$smartyRs[] = $row;
-        } 
-    }
-   
-   return $smartyRs;	
-}

@@ -38,8 +38,8 @@
 
     </table>
 
-    {if isset($arUser)}
         {$buttonClass = ""}
+    {if isset($arUser)}
         <h2>Данные заказчика</h2>
         <div id="orderUserInfoBox" {$buttonClass}>
             {$name = $arUser['name']}
@@ -98,5 +98,5 @@
         {$buttonClass = "class='hideme'"}	
     {/if}
 
-    <input {$buttonClass} id="btnSaveOrder" type="button" value="Оформить заказ" onclick="saveOrder();"/>
+    <input {$buttonClass} id="btnSaveOrder" type="button" value="Оформить заказ" onClick="saveOrder();"/>
 </form>

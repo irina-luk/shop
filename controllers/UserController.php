@@ -9,6 +9,7 @@ class UserController  extends BaseClient   {
     	parent::input($smarty, $param);
         
         $this->ob_m_user = UserModel::get_instance();
+        $this->ob_m_order = OrdersModel::get_instance();
         
         /* AJAX регистрация пользователя.
          * Инициализация сессионнной переменной ($_SESSION['user'])
@@ -44,7 +45,7 @@ class UserController  extends BaseClient   {
                     $resData['userName'] = $name ? $name : $email;
                     $resData['userEmail'] = $email;
 
-                    //$_SESSION['user'] = $userData;
+                    $_SESSION['user'] = $userData;
                     $_SESSION['user']['displayName'] = $resData['userName'];
                 } else {
                     $resData['success'] = 0; 
@@ -83,8 +84,8 @@ class UserController  extends BaseClient   {
                 $resData['success'] = 1;
                 $resData['message'] = 'верный логин или пароль'; 
 
-                //$resData['userName'] = $userData['name'] ? $userData['name'] : $userData['email'];
-                //$resData['userEmail'] = $email;
+                $resData['userName'] = $userData['name'] ? $userData['name'] : $userData['email'];
+                $resData['userEmail'] = $email;
             } else {
                 $resData['success'] = 0; 
                 $resData['message'] = 'Неверный логин или пароль'; 
@@ -105,10 +106,10 @@ class UserController  extends BaseClient   {
                 exit();
             }
             // получаем список заказов пользователя
-            //$rsUserOrders = $this->getCurUserOrders();
-                //d($rsUserOrders);
+            $rsUserOrders = $this->ob_m_order->getCurUserOrders();
+              //  d($rsUserOrders);
             $smarty->assign('pageTitle', 'Страница пользователя');
-            //$smarty->assign('rsUserOrders', $rsUserOrders);
+            $smarty->assign('rsUserOrders', $rsUserOrders);
 
             $this->loadTemplate($smarty, 'header');
             $this->loadTemplate($smarty, 'user');
